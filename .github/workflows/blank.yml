@@ -3,9 +3,14 @@ on: push
 jobs:
   action-demo:
     runs-on: ubuntu-latest
+    env:
+      # Force all JavaScript actions to use Node.js 24
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v4
+        # Latest checkout action (Node.js 24 compatible)
+        uses: actions/checkout@v5
 
       - name: Print Index.html file
         run: cat Index.html
